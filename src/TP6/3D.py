@@ -1,6 +1,5 @@
 from numpy import *
 import pylab as p
-#import matplotlib.axes3d as p3
 import mpl_toolkits.mplot3d.axes3d as p3
 
 # u and v are parametric variables.

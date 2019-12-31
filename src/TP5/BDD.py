@@ -76,7 +76,7 @@ class Region(Base):
 def ParseAndPopulate():
     # Régions
     region_file = '../../data/regions.csv'
-    with open(region_file, 'rt') as file:
+    with open(region_file, 'rt', encoding="ISO-8859-1") as file:
         session = Session()
         ignore = 8 # Ignore 8 premières lignes
         current = 0
@@ -100,7 +100,7 @@ def ParseAndPopulate():
 
     # Départements
     dpt_file = '../../data/departements.csv'
-    with open(dpt_file, 'rt') as file:
+    with open(dpt_file, 'rt', encoding="ISO-8859-1") as file:
         session = Session()
         ignore = 8  # Ignore 8 premières lignes
         current = 0
@@ -126,7 +126,7 @@ def ParseAndPopulate():
 
     # Communes
     commune_file = '../../data/communes.csv'
-    with open(commune_file, 'rt') as file:
+    with open(commune_file, 'rt', encoding="ISO-8859-1") as file:
         session = Session()
         ignore = 8  # Ignore 8 premières lignes
         current = 0
@@ -158,6 +158,8 @@ def CreerBase():
 
     # Parsing et Remplissage
     ParseAndPopulate()
+
+CreerBase()
 
 # Calcul populations
 def ComparePop():
@@ -289,4 +291,7 @@ def ChargXML():
                 commune.pop_tot = communeET.attrib["pop_tot"]
                 session.add(commune)
     session.commit()
-ChargXML()
+
+#ChargXML()
+#ComparePop()
+CommunesDoublon()

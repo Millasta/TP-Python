@@ -5,6 +5,14 @@ body = ""
 
 # Check connection
 if environ.keys().__contains__('HTTP_COOKIE'):
+    body = """
+                                    <p>Vous devez d'abord ous connecter !</p> 
+                                    <form action="/index.py" method="post">
+                                        <input type="hidden" name="deconnect" value=1 />
+                                        <input type="submit" name"Send" value="Se connecter" />
+                                    </form>
+                                    """
+
     if (environ['HTTP_COOKIE'] is not ""):
         for cookie in map(str.strip, str.split(environ['HTTP_COOKIE'], ';')):
             (key, value) = str.split(cookie, '=');
@@ -27,15 +35,7 @@ if environ.keys().__contains__('HTTP_COOKIE'):
                                     <input type="hidden" name="deconnect" value=1 />
                                     <input type="submit" name"Send" value="Se deconnecter" />
                                 </form>
-                                """ + body
-                    else:
-                        body = """
-                                <p>Vous devez d'abord ous connecter !</p> 
-                                <form action="/index.py" method="post">
-                                    <input type="hidden" name="deconnect" value=1 />
-                                    <input type="submit" name"Send" value="Se connecter" />
-                                </form>
-                                """ + body
+                                """
 
 
 print("Content-type: text/html; charset=utf-8\n")

@@ -20,10 +20,10 @@ plt.plot(randoms2[:100], color="blue", label="bleu")
 # Style
 print(plt.style.available)
 
-arrow = plt.arrow(0, 0, 0.5, 0.6)
 plt.axis([0, 100,-4, 21])
 plt.legend(loc='lower left');
 axes = plt.axes()
+arrow = axes.arrow(5, 20, 15, -5, head_width=0.5, head_length=1)
 axes = axes.set(xlabel='Nombres générés', ylabel='Valeur')
 plt.title("Graphe")
 
